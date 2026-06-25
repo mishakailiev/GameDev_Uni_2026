@@ -5,14 +5,14 @@
 This is my first game created. It has one level with a few mobs and traps. There is a final boss in the end which is bigger and can shoot arrows. 
 
 # Movement
-Left: ←
-Right: →
-Dash: Z
-Jump: Space
+Left: ←  
+Right: →  
+Dash: Z  
+Jump: Space  
 
 # Attacks
-Normal: X
-Up Attack: ↑ + X
-Down Attack: ↓ + X
+Normal: X  
+Up Attack: ↑ + X  
+Down Attack: ↓ + X  
 
 
