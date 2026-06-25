@@ -207,7 +207,7 @@ public class Attacks : MonoBehaviour
         if (move != null)
             move.canMove = false;
         float temp = 0f;
-        if (rb.linearVelocity.y > 0f || rb.linearVelocity.y < 0f)
+        if (rb.linearVelocity.y != 0f)
             temp = knockbackForce * 0.6f;
         else
             temp = knockbackForce;

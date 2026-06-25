@@ -5613,11 +5613,11 @@ PrefabInstance:
       objectReference: {fileID: 1216015248}
     - target: {fileID: 8567821191460046009, guid: ac5a257a3065f874e8d034c78dad51bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.38
+      value: -12.15
       objectReference: {fileID: 0}
     - target: {fileID: 8567821191460046009, guid: ac5a257a3065f874e8d034c78dad51bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 8567821191460046009, guid: ac5a257a3065f874e8d034c78dad51bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7766,7 +7766,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 130548507419663909, guid: 732b198c43d4e3246b745ec5586bfcb1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1093227863}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1160738993271221108, guid: 732b198c43d4e3246b745ec5586bfcb1, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1790996990}
   m_SourcePrefab: {fileID: 100100000, guid: 732b198c43d4e3246b745ec5586bfcb1, type: 3}
 --- !u!4 &1610697065 stripped
 Transform:
@@ -8833,6 +8836,29 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1790996980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1160738993271221108, guid: 732b198c43d4e3246b745ec5586bfcb1, type: 3}
+  m_PrefabInstance: {fileID: 1610697064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1790996983 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1096109663539215529, guid: 732b198c43d4e3246b745ec5586bfcb1, type: 3}
+  m_PrefabInstance: {fileID: 1610697064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1790996990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790996980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0575c55d89cbe0249838d993db84214e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MobAttackAnimation
+  animation: {fileID: 1790996983}
 --- !u!1 &1792324853
 GameObject:
   m_ObjectHideFlags: 0

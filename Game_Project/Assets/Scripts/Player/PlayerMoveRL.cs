@@ -27,7 +27,6 @@ public class PlayerMoveRL : MonoBehaviour
 
     void Update()
     {
-        //if (GetComponent<PlayerController>().isDashing) return;
         moveInput = Input.GetAxisRaw("Horizontal");
     }
 
