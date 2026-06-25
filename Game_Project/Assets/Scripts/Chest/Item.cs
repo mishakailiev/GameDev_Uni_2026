@@ -27,6 +27,11 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (playerhealth == null)
+            {
+                Debug.Log("Player health is not set to an object!");
+                return;
+            }
             if (isHealItem)
             {
                 playerhealth.Heal(HealItem);

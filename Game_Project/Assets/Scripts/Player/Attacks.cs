@@ -49,15 +49,13 @@ public class Attacks : MonoBehaviour
         {
             Debug.Log("Attack down!");
             capsuleDirection = CapsuleDirection2D.Vertical;
-            InitializeAttack(attack_down);
-            StartCoroutine(VisualAttackDown());
+            StartVisualAttackDown();
         }
         else if (Input.GetKeyDown(KeyCode.X) && Input.GetKey(KeyCode.UpArrow) && canAttack)
             {
                 Debug.Log("Attack up!");
                 capsuleDirection = CapsuleDirection2D.Vertical;
-                InitializeAttack(attack_up);
-                StartCoroutine(VisualAttackUp());
+                StartVisualAttackUp();
             }
         else
         {
@@ -65,17 +63,16 @@ public class Attacks : MonoBehaviour
             {
                 Debug.Log("Attack normal!");
                 capsuleDirection = CapsuleDirection2D.Horizontal;
-                InitializeAttack(attack_right);
-                StartCoroutine(VisualAttackNormal());
-            }
+                StartVisualAttackNormal();
+            }   
         }
     }
 
-    void InitializeAttack(GameObject attack)
+    void InitializeNormalAttack()
     {
         audioSource.PlayOneShot(attackSound);
 
-        Collider2D col = attack.GetComponent<Collider2D>();
+        Collider2D col = attack_right.GetComponent<Collider2D>();
 
         Collider2D[] hits = Physics2D.OverlapCapsuleAll(
             col.bounds.center,
@@ -84,52 +81,90 @@ public class Attacks : MonoBehaviour
             0f
         );
 
-        bool hit_enemy = false;
-        MobHealthGround mob_ground = null;
-        MobHealthAir mob_air = null;
-
-        MobMovement mob_ground_move = null;
-        MobMovementAir mob_air_move = null;
+        bool hitsth = false;
+        MobHealth temp = null;
 
         foreach (var hit in hits)
         {
-            if (hit.CompareTag("Enemy"))
+            if (hit.tag == "Enemy" || hit.tag == "Spike")
             {
-                Debug.Log("Hit!");
-                mob_ground = hit.GetComponent<MobHealthGround>();
-                mob_air = hit.GetComponent<MobHealthAir>();
-
-                mob_ground_move = hit.GetComponent<MobMovement>();
-                mob_air_move = hit.GetComponent<MobMovementAir>();
-
-                if(mob_ground_move != null)
-                    mob_ground_move.StartCoroutine(mob_ground_move.ApplyStun());
-                if(mob_air_move != null)
-                    mob_air_move.StartCoroutine(mob_air_move.ApplyStun());
-
-                if (mob_ground != null)
-                    mob_ground.TakeDamage(attack.GetComponent<AttackDamage>().GetDamage());
-                if(mob_air != null)
-                    mob_air.TakeDamage(attack.GetComponent<AttackDamage>().GetDamage());
-
-                hit_enemy = true;
+                hitsth = true;
             }
-
-            if (hit.CompareTag("Spike"))
+            temp = hit.GetComponent<MobHealth>();
+            if (temp != null)
             {
-                Debug.Log("Hit spike!");
-                hit_enemy = true;
-            }
-
-            if (hit.CompareTag("EnemyBullet"))
-            {
-                Debug.Log("Hit enemy Bullet!");
-                Destroy(hit.gameObject);
+                temp.TakeDamage(GetComponent<AttackDamage>().GetDamage());
             }
         }
 
-        if (hit_enemy)
-            knockBackPlayer(attack, false, 1f);
+        if (hitsth)
+            knockBackPlayer(attack_right, false, 1f);
+
+    }
+    void InitializeUpAttack()
+    {
+        audioSource.PlayOneShot(attackSound);
+
+        Collider2D col = attack_up.GetComponent<Collider2D>();
+
+        Collider2D[] hits = Physics2D.OverlapCapsuleAll(
+            col.bounds.center,
+            col.bounds.size + add_offset,
+            capsuleDirection,
+            0f
+        );
+
+        bool hitsth = false;
+        MobHealth temp = null;
+
+        foreach (var hit in hits)
+        {
+            if (hit.tag == "Enemy" || hit.tag == "Spike")
+            {
+                hitsth = true;
+            }
+            temp = hit.GetComponent<MobHealth>();
+            if (temp != null)
+            {
+                temp.TakeDamage(GetComponent<AttackDamage>().GetDamage());
+            }
+        }
+
+        if (hitsth)
+            knockBackPlayer(attack_up, false, 1f);
+
+    }
+    void InitializeDownAttack()
+    {
+        audioSource.PlayOneShot(attackSound);
+
+        Collider2D col = attack_down.GetComponent<Collider2D>();
+
+        Collider2D[] hits = Physics2D.OverlapCapsuleAll(
+            col.bounds.center,
+            col.bounds.size + add_offset,
+            capsuleDirection,
+            0f
+        );
+
+        bool hitsth = false;
+        MobHealth temp = null;
+
+        foreach (var hit in hits)
+        {
+            if (hit.tag == "Enemy" || hit.tag == "Spike")
+            {
+                hitsth = true;
+            }
+            temp = hit.GetComponent<MobHealth>();
+            if (temp != null)
+            {
+                temp.TakeDamage(GetComponent<AttackDamage>().GetDamage());
+            }
+        }
+
+        if (hitsth)
+            knockBackPlayer(attack_down, false, 1f);
 
     }
 
@@ -185,29 +220,35 @@ public class Attacks : MonoBehaviour
     }
 
 
-    private System.Collections.IEnumerator VisualAttackUp()
+    private void StartVisualAttackUp()
     {
         animation.SetBool("isAttackingUp", true);
         canAttack = false;
-        yield return new WaitForSeconds(attackDuration);
+    }
+    private void StopVisualAttackUp()
+    {
         canAttack = true;
         animation.SetBool("isAttackingUp", false);
     }
 
-    private System.Collections.IEnumerator VisualAttackDown()
+    private void StartVisualAttackDown()
     {
         animation.SetBool("isAttackingDown", true);
         canAttack = false;
-        yield return new WaitForSeconds(attackDuration);
+    }
+    private void StopVisualAttackDown()
+    {
         canAttack = true;
         animation.SetBool("isAttackingDown", false);
     }
 
-    private System.Collections.IEnumerator VisualAttackNormal()
+    private void StartVisualAttackNormal()
     {
         animation.SetBool("isAttackingNormal", true);
         canAttack = false;
-        yield return new WaitForSeconds(attackDuration);
+    }
+    private void StopVisualAttackNormal()
+    {
         canAttack = true;
         animation.SetBool("isAttackingNormal", false);
     }

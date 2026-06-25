@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
     private GameObject child_playerTakeDMG;
 
+    private int normalLayer;
+    private int dashLayer;
+
     // Audio 
     private AudioSource audioSource;
     [SerializeField]
@@ -63,6 +66,8 @@ public class PlayerController : MonoBehaviour
         staminaSlider.maxValue = Stamina;
         staminaSlider.value = Stamina;
         maxStamina = Stamina;
+        normalLayer = LayerMask.NameToLayer("Player");
+        dashLayer = LayerMask.NameToLayer("PlayerDashing");
     }
 
     void Start()
@@ -146,7 +151,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Dash used.");
             animation.SetBool("isDashing", true);
-            canTakeDashDMG = false;
+            gameObject.layer = dashLayer;
+            child_playerTakeDMG.layer = dashLayer;
             canDash = false;
             isDashing = true;
             Stamina -= 1f;
@@ -166,6 +172,7 @@ public class PlayerController : MonoBehaviour
 
             child_playerTakeDMG.GetComponent<PlayerTakeDMG>().isTakingDMG = false;
 
+
             rb.gravityScale = originalGravity;
             isDashing = false;
             animation.SetBool("isDashing", false);
@@ -175,7 +182,8 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForSeconds(dashCooldown);
             canDash = true;
-            canTakeDashDMG = true;
+            gameObject.layer = normalLayer;
+            child_playerTakeDMG.layer = normalLayer;
         }
     }
 

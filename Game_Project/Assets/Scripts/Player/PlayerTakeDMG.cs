@@ -38,7 +38,7 @@ public class PlayerTakeDMG : MonoBehaviour
     void OnCollisionStay2D(Collision2D collision)
     {
         string tag = collision.gameObject.tag;
-        if (tag == "Enemy" || tag == "Spike")
+        if (tag == "Enemy" || tag == "Spike" )
         {
             isTakingDMG = true;
             Debug.Log("Player hit from Collision!" + tag);
@@ -60,10 +60,10 @@ public class PlayerTakeDMG : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.gameObject.tag;
-        if (parent_player.GetComponent<PlayerController>().canTakeDashDMG && tag == "EnemyBullet")
+        if (tag == "EnemyBullet")
         {
             isTakingDMG = true;
-            Debug.Log("Player hit from Trigger!" + tag);
+            Debug.Log("Player hit on Enter from Trigger! " + tag);
             PlayerHealth health = parent_player.GetComponent<PlayerHealth>();
             if (health != null)
             {
@@ -82,7 +82,7 @@ public class PlayerTakeDMG : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
         string tag = collision.gameObject.tag;
-        if (parent_player.GetComponent<PlayerController>().canTakeDashDMG && tag == "EnemyBullet")
+        if (tag == "EnemyBullet")
         {
             isTakingDMG = true;
             Debug.Log("Player hit from Trigger!" + tag);

@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 1180347663239542887}
   - component: {fileID: 7085419124648867916}
   - component: {fileID: 4823797682387899286}
+  - component: {fileID: 7467237260655120329}
   - component: {fileID: 9095571522645739407}
   - component: {fileID: 6599354338922066823}
+  - component: {fileID: -2369527557554535772}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -212,6 +214,19 @@ MonoBehaviour:
   knockbackDuration: 0.19
   attackDuration: 0.3
   attackSound: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
+--- !u!114 &7467237260655120329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430323521207723046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab45336a04160524dab74b70d5ee0844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackDamage
+  damage: 2
 --- !u!95 &9095571522645739407
 Animator:
   serializedVersion: 7
@@ -331,6 +346,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2369527557554535772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430323521207723046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f9e540dc87a143a9f92bb73790904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavePlayerFunction
 --- !u!1 &5357541401322433722
 GameObject:
   m_ObjectHideFlags: 0

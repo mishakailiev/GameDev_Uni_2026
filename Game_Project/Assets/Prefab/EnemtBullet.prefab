@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6047030169079649731}
   - component: {fileID: 637946754954885882}
   - component: {fileID: 1999458765924409758}
+  - component: {fileID: 8190488657126469841}
   - component: {fileID: 3963034528965971943}
   - component: {fileID: 6075010695775250124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemtBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -95,8 +96,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
   player: {fileID: 0}
-  speed: 1
-  direction: 0
+  speed: 6.15
+  direction: 1
+--- !u!114 &8190488657126469841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5136124952221788216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a614e3154112014589b923221a8c4b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyBullet
+  player: {fileID: 0}
+  cam_pos: {fileID: 0}
+  maxDistance: 30
 --- !u!114 &3963034528965971943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2671231369749388079}
   - component: {fileID: 9168187619386912819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TX Village Props - Heavy Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

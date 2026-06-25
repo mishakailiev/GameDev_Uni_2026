@@ -45,13 +45,31 @@ public class PlayerHealth : MonoBehaviour
         healthBeforeDeath = currentHealth;
         rb = GetComponent<Rigidbody2D>();
 
+        setHealthBar();
+
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void setHealthBar()
+    {
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
         }
+    }
 
-        audioSource = GetComponent<AudioSource>();
+    public float gethealth()
+    {
+        return currentHealth;
+    }
+
+    public void setHealth(float set_health)
+    {
+        if (set_health < 0f)
+            return;
+        currentHealth = set_health;
+        setHealthBar();
     }
 
     public void Heal(float amount)
